@@ -23,4 +23,5 @@ nbproject
 !/html/wp-content/themes
 /html/wp-content/themes/*
 !/html/wp-content/themes/phytolife
+/wp-config.php
 !.gitkeep
