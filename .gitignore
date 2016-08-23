@@ -14,6 +14,7 @@ nbproject
 .idea
 
 /.env
+/.htpasswd
 /vendor
 /html/*
 !/html/favicon.ico
