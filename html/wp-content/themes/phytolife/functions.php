@@ -38,14 +38,70 @@ function phytolife_custom_wordpress_func() {
   }
   add_action('wp_dashboard_setup', 'hide_dashboard_widgets');
 
-register_taxonomy('cc_tag', 'post',
-	array(
-		'labels' => array(
-			'name' => '施工事例タグ'
-		),
-		'hierarchical' => true
-	)
-);
+
+  // カスタム投稿タイプ作成
+  function create_post_type() {
+    register_post_type(
+      'construction_case', //投稿タイプ名
+      array(
+        'label'=> '施工事例', //ラベル名
+        'labels' => array(
+          'menu_name' => '施工事例', //管理画面のメニュー名
+          'all_items' => '施工事例一覧',
+          'add_new_item' => '施工事例を追加'
+        ),
+        'description'=> 'ディスクリプション',
+        'public' => true, //公開状態
+        'query_var' => true, // スラッグでURLをリクエストできる
+        'hierarchical' => false, //固定ページのように親ページを指定するならtrue
+        'rewrite' => array('slug' => 'construction_case'), //スラッグ名
+        'has_archive' => true, //パーマリンクがデフォルト以外、アーカイブページを表示する場合はtrue
+        'menu_position' => 5,
+        'supports' => array(
+          'title',
+          'editor',
+          'custom-fields',
+          'thumbnail',
+          'page-attributes',
+          'excerpt'
+        )
+      )
+    );
+    register_taxonomy(
+      'construction_case_cat', //タクソノミ名
+      'construction_case', //タクソノミを使う投稿タイプ名
+      array(
+        'rewrite' => array('slug' => 'construction_case_cat'), //投稿タイプのスラッグ
+        'label' => '施工事例カテゴリー', //ラベル名
+        'labels' => array(
+          'menu_name' => 'カテゴリー' //管理画面のメニュー名
+        ),
+        'public' => true, //公開状態
+        'hierarchical' => true, //カテゴリのように扱う場合はtrue
+        'has_archive' => true,
+        'query_var' => true,
+        'show_admin_column' => true, //投稿タイプのテーブルにタクソノミーのカラムを生成
+      )
+    );
+    register_taxonomy(
+      'construction_case_tag', //タクソノミ名
+      'construction_case', //タクソノミを使う投稿タイプ名
+      array(
+        'rewrite' => array('slug' => 'construction_case_tag'), //投稿タイプのスラッグ
+        'label' => '施工事例タグ', //ラベル名
+        'labels' => array(
+          'menu_name' => 'タグ' //管理画面のメニュー名
+        ),
+        'public' => true, //公開状態
+        'hierarchical' => true, //タグのように扱う場合はfalse
+        'has_archive' => true,
+        'query_var' => true,
+        'show_admin_column' => true, //投稿タイプのテーブルにタクソノミーのカラムを生成
+      )
+    );
+  }
+  add_action('init', 'create_post_type');
+
 
   //連想配列を見やすく展開表示
   function pp($data){
@@ -56,4 +112,40 @@ register_taxonomy('cc_tag', 'post',
 
 }
 phytolife_custom_wordpress_func();
+
+
+
+// 施工事例カテゴリー取得
+function getCCCategory() {
+  $lists = get_categories(array(
+  	'taxonomy' => 'construction_case_cat',
+    'hide_empty' => 0,
+    'orderby' => 'order',
+  ));
+  return $lists;
+}
+
+// 施工事例タグ取得
+function getCCTag() {
+  $lists = get_categories(array(
+  	'taxonomy' => 'construction_case_tag',
+    'hide_empty' => 0,
+    'hierarchical' => 0,
+    'parent' => 0,
+    'orderby' => 'order',
+  ));
+  foreach($lists as &$list){
+    $child_lists = get_categories(array(
+    	'taxonomy' => 'construction_case_tag',
+      'hide_empty' => 0,
+      'hierarchical' => 0,
+      'parent' => $list->cat_ID,
+      'orderby' => 'order',
+    ));
+    $list->child_tags = $child_lists;
+  }
+  return $lists;
+}
+
+//トップページ用施工事例一覧取得
 

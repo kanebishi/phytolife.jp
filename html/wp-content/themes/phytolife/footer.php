@@ -10,7 +10,7 @@
     </div>
     <div class="col-xs-6">
       <div class="contactboxh">
-        <a style="text-decoration: none;" href="#">
+        <a style="text-decoration: none;" href="/contact">
           <p class="contactp"><i class="fa fa-envelope-o" aria-hidden="true"></i> フォーム</p>
         </a>
       </div>
@@ -36,7 +36,7 @@
         <h2 class="lineb"><?php bloginfo('name'); ?></h2>
         <p><i class="fa fa-phone" aria-hidden="true"></i> 072-761-2656</p>
         <p><i class="fa fa-print" aria-hidden="true"></i> 072-702-5770</p>
-        <p>〒563-0022<br>大阪府池田市旭ヶ丘３-１-２７<br>営業時間 : 8:00～19:00 </p>
+        <p>〒563-0022<br>大阪府池田市旭ヶ丘3-1-27<br>営業時間 : 8:00～19:00 </p>
       </div>
       <div class="col-xs-4">
         <h3 class="lineb">施工内容</h3>
@@ -59,8 +59,6 @@
           <li>池田市</li>
           <li>箕面市</li>
           <li>吹田市</li>
-          <li>吹田市</li>
-          <li>吹田市</li>
           <li>西宮市</li>
           <li>芦屋市</li>
           <li>川西市</li>
@@ -70,9 +68,9 @@
       </div>
       <div class="col-xs-12">
         <ul class="list-inline">
-          <li><a href="#">| サイトポリシー |</a></li>
-          <li><a href="#">| サイトマップ |</a></li>
-          <li><a href="#">| お問合せ |</a></li>
+          <li><a href="/sitepolicy">| サイトポリシー |</a></li>
+          <li><a href="/sitemap">| サイトマップ |</a></li>
+          <li><a href="/contact">| お問合せ |</a></li>
         </ul>
       </div>
       <div class="col-xs-12">

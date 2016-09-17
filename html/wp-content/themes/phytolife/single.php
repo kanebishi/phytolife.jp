@@ -1,4 +1,5 @@
 <?php
+//投稿ページ
 get_header();
 
 if(have_posts()):
@@ -10,8 +11,8 @@ if(have_posts()):
   <div class="container">
     <ol class="breadcrumb">
       <li><a href="<?php echo home_url('/'); ?>"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-      <li><a href="#">ああああああ</a></li>
-      <li><a href="#">いいいいいい</a></li>
+      <li><a href="#">ダミーリンク</a></li>
+      <li><a href="#">ダミーリンク</a></li>
       <li class="active"><?php the_title(); ?></li>
     </ol>
   </div>
@@ -20,57 +21,21 @@ if(have_posts()):
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-8"><!-- left -->
+    <div class="col-sm-8">
       <div class="leftbox">
-        <div class="title"><!-- （日時とタイトル） -->
+        <div class="title">
           <p class="bg-deta"><?php the_time('Y/m/d'); ?></p>
           <h1 class="maintitle"><?php the_title(); ?></h1>
         </div>
-        <div class="post-tag"><!-- tag表示 -->
-          <span class="label label-default">ウッドフェンス</span>
-          <span class="label label-default">ウッドデッキ</span>
-          <span class="label label-warning">目隠し</span>
-          <span class="label label-warning">バーベキュー</span>
+<?php if($tags = get_the_terms($post->ID, 'construction_case_tag')): ?>
+        <div class="post-tag">
+  <?php foreach($tags as $tag): ?>
+          <span class="label label-<?php echo $tag->description; ?>"><?php echo esc_html($tag->name); ?></span>
+  <?php endforeach; ?>
         </div>
-        <div class="post-main"><?php the_content(); ?><!-- 投稿本文 -->
-          <h2><small><i class="fa fa-pencil-square-o" aria-hidden="true"></i>　特徴</small></h2>
-          <img src="<?php echo get_template_directory_uri(); ?>/img/bq.jpg" width="100%" class="img-responsive">
-          <h3><small>お客様のご要望（お悩み）</small></h3>
-          <p>あああああああああああああああああああああ。ああああああああああああああああああああああああ。ああああああああああああああああああああああ。</p>
-          <h3><small>家族構成：大人２人/子供２人　施工面積：００坪　工期：３ヶ月　費用：非公開</small></h3>
-          <h2><small><i class="fa fa-camera" aria-hidden="true"></i>　ギャラリー</small></h2>
-          <div class="row">
-            <div class="col-md-6">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="コンセプト" class="img-thumbnail">
-              <p>ああああああああああああああああああああああああああ。ああああああああああああああああああああああああああ。ああああああああああああああああああああああああああ。</p>
-            </div>
-            <div class="col-md-6">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/2.jpg" alt="コンセプト" class="img-thumbnail">
-              <p>いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。</p>
-            </div>
-            <div class="col-md-6">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="コンセプト" class="img-thumbnail">
-              <p>ああああああああああああああああああああああああああ。ああああああああああああああああああああああああああ。ああああああああああああああああああああああああああ。</p>
-            </div>
-            <div class="col-md-6">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/2.jpg" alt="コンセプト" class="img-thumbnail">
-              <p>いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。</p>
-            </div>
-            <div class="col-md-6">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="コンセプト" class="img-thumbnail">
-              <p>ああああああああああああああああああああああああああ。ああああああああああああああああああああああああああ。ああああああああああああああああああああああああああ。</p>
-            </div>
-            <div class="col-md-6">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/2.jpg" alt="コンセプト" class="img-thumbnail">
-              <p>いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。いいい。いいいいいいいいいいいいいいいいいいいいいいいいいい。</p>
-            </div>
-          </div>
-          <h2><small><i class="fa fa-comment-o" aria-hidden="true"></i>　施工を終えたお客様の声</small></h2>
-          <blockquote>
-            あああああああああああああああああああああ。ああああああああああああああああああああああああ。ああああああああああああああああああああああ。
-            あああああああああああああああああああああ。ああああああああああああああああああああああああ。ああああああああああああああああああああああ。
-            あああああああああああああああああああああ。ああああああああああああああああああああああああ。ああああああああああああああああああああああ。
-          </blockquote>
+<?php endif; ?>
+        <div class="post-main">
+<?php the_content(); ?>
         <!--.post-main--></div>
       <!--.leftbox--></div>
     <!--.col-sm-8--></div>

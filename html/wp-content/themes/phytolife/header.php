@@ -1,3 +1,9 @@
+<?php
+global $catlists;
+global $taglists;
+$catlists = getCCCategory();
+$taglists = getCCTag();
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -35,22 +41,24 @@
 
     <div id="gnavi" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/concept">コンセプト</a></li>
+        <li><a href="/sekonaiyo">施工内容</a></li>
         <li>
-          <a href="fix_d.html">固定ページ</a>
-        </li>
-        <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">投稿ページ<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">施工事例<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="post_d.html">デフォルト</a></li>
-            <li><a href="post_s.html">サンプル</a></li>
+<?php foreach($catlists as $cat): ?>
+            <li><a href="<?php echo get_category_link($cat->term_id); ?>"><?php echo $cat->name; ?></a></li>
+<?php endforeach; ?>
           </ul>
         </li>
-        <li><a href="fix_list.html">投稿一覧</a></li>
-        <li class="dropdown">
+        <li><a href="/flow_to_complete">完成までの流れ</a></li>
+        <li><a href="/faq">よくあるご質問</a></li>
+        <li><a href="/company">会社概要</a></li>
+        <li>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">お問合せ <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-envelope"></i> フォーム</a></li>
-            <li><a href="#"><i class="fa fa-phone"></i> お電話</a></li>
+            <li><a href="/contact"><i class="fa fa-envelope"></i> フォーム</a></li>
+            <li><a href="/contact"><i class="fa fa-phone"></i> お電話</a></li>
           </ul>
         </li>
       </ul>

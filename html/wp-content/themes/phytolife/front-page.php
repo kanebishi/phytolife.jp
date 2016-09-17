@@ -1,7 +1,11 @@
 <?php
 get_header();
-?>
 
+global $taglists;
+
+if(have_posts()):
+  while(have_posts()):the_post();
+?>
 
 <div class="container">
   <!--　Carousel  -->
@@ -81,64 +85,30 @@ get_header();
   <div class="top-post">
     <h2 class="line"><i class="fa fa-tag" aria-hidden="true"></i>　施工事例</h2>
     <div class="row">
+<?php
+$the_query = new WP_Query(array(
+  'post_type' => 'construction_case',
+  'posts_per_page' => 8,
+  'orderby' => 'date',
+  'order' => 'DESC',
+));
+if($the_query->have_posts()):
+  while($the_query->have_posts()):$the_query->the_post();
+?>
       <div class="col-xs-6 col-md-3">
-        <a href="post_s.html" class="thumbnail">
+        <a href="<?php the_permalink(); ?>" class="thumbnail">
           <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
+          <p class="thn-deta"><?php the_time('Y/m/d'); ?></p>
+          <h3 class="thn-title"><?php the_title(); ?></h3>
         </a>
       </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="post_s.html" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="post_s.html" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="post_s.html" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta">2016/08/30</p>
-          <h3 class="thn-title">１２３４５６７８９１０</h3>
-        </a>
-      </div>
+<?php
+  endwhile;
+endif;
+wp_reset_postdata();
+?>
       <div class="col-xs-12">
-        <div class="pull-right"><a class="btn btn-default btn-sm" href="fix_list.html" role="button">施工事例一覧</a></div>
+        <div class="pull-right"><a class="btn btn-default btn-sm" href="/construction_case_cat/" role="button">施工事例一覧</a></div>
       </div>
     </div>
   </div>
@@ -150,61 +120,20 @@ get_header();
   <!--　タグ表示  -->  
   <div class="tagnbox">
     <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-tags" aria-hidden="true"></i>　施工内容
-          </div>
-          <div class="panel-body">
-            <span class="label label-default">ガーデニング</span>
-            <span class="label label-default">ナチュラルガーデン</span>
-            <span class="label label-default">ウッドフェンス</span>
-            <span class="label label-default">ウッドデッキ</span>
-            <span class="label label-default">パーゴラ</span>
-            <span class="label label-default">ガーデニング</span>
-            <span class="label label-default">ナチュラルガーデン</span>
-            <span class="label label-default">ウッドフェンス</span>
-            <span class="label label-default">ウッドデッキ</span>
-            <span class="label label-default">パーゴラ</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-tags" aria-hidden="true"></i>　ご要望/お悩み
-          </div>
-          <div class="panel-body">
-            <span class="label label-warning">目隠し</span>
-            <span class="label label-warning">防犯</span>
-            <span class="label label-warning">バーベキュー</span>
-          </div>
-        </div>
-      </div>
+<?php foreach($taglists as $tag): ?>
       <div class="col-xs-6 col-md-6">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <i class="fa fa-tags" aria-hidden="true"></i>　予算
+            <i class="fa fa-tags" aria-hidden="true"></i>　<?php echo $tag->name; ?>
           </div>
           <div class="panel-body">
-            <span class="label label-success">～３０万円</span>
-            <span class="label label-success">～１００万円</span>
-            <span class="label label-success">～１５０万円</span>
+  <?php foreach($tag->child_tags as $child_tag): ?>
+            <a href="<?php echo get_category_link($child_tag->term_id); ?>"><span class="label label-<?php echo $tag->description; ?>"><?php echo $child_tag->name; ?></span></a>
+  <?php endforeach; ?>
           </div>
         </div>
       </div>
-      <div class="col-xs-6 col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-tags" aria-hidden="true"></i>　面積
-          </div>
-          <div class="panel-body">
-            <span class="label label-primary">～１０坪</span>
-            <span class="label label-primary">～５０坪</span>
-            <span class="label label-primary">～１００坪</span>
-          </div>
-        </div>
-      </div>
+<?php endforeach; ?>
     </div>
   </div>
   <!--　タグ表示  -->
@@ -213,5 +142,8 @@ get_header();
 
 
 <?php
+  endwhile;
+endif;
+
 get_footer();
 ?>
