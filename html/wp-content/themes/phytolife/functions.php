@@ -2,7 +2,7 @@
 
 // ######### WordPress機能の設定 ##########################################
 
-//フロントにおけるWordPress機能のカスタマイズ
+//WordPress機能のカスタマイズ
 function phytolife_custom_wordpress_func() {
 
   //ログイン時の上部アドミンバーを非表示にする
@@ -21,6 +21,16 @@ function phytolife_custom_wordpress_func() {
   add_theme_support('post-thumbnails');
   set_post_thumbnail_size(120, 120, false);
   add_image_size('list_thumbnail', 120, 120, false);
+
+  //記事中で使用するテンプレートディレクトリのショートコード
+  function shortcode_template_directory_img(){
+    return get_template_directory_uri()."/img";
+  }
+  add_shortcode('img', 'shortcode_template_directory_img');
+  function shortcode_template_directory_image(){
+    return get_template_directory_uri()."/image";
+  }
+  add_shortcode('image', 'shortcode_template_directory_image');
 
 
   //### ダッシュボード関連
