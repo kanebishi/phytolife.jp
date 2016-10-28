@@ -8,70 +8,32 @@ if(have_posts()):
 ?>
 
 <div class="container">
-  <!--　Carousel  -->
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li class="active" data-target="#myCarousel" data-slide-to="0"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/car1.png" alt="First slide">
-        <div class="carousel-caption">
-          <p>特集コンテンツ１</p>
-        </div>
-      </div>
-      <div class="item">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/car2.png" alt="Second slide">
-        <div class="carousel-caption">
-          <p>特集コンテンツ2</p>
-        </div>
-      </div>
-      <div class="item">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/car1.png" alt="Third slide">
-        <div class="carousel-caption">
-          <p>特集コンテンツ3</p>
-        </div>
-      </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">前へ</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">次へ</span>
-    </a>
-  </div>
-  <!--//　Carousel  -->
+ <img src="<?php echo get_template_directory_uri(); ?>/img/car1.jpg" class="img-responsive">
 <!--.container--></div>
-
-
 
 <div class="container">
   <!--　ウィジエット  -->
   <div class="top-con">
     <h1 class="line"><i class="fa fa-home" aria-hidden="true"></i>　フィトライフの暮らしの庭</h1>
     <div class="row">
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" target="_blank">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/ct.png" width="256" >
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <a href="http://phytolife.jp/model_garden/" class="thumbnail" >
+          <img src="<?php echo get_template_directory_uri(); ?>/img/model_garden.png" class="img-responsive" >
         </a>
       </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" target="_blank">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/ct.png" width="256" >
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <a href="http://phytolife.jp/how_much/" class="thumbnail">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/how_much.png" class="img-responsive" >
         </a>
       </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" target="_blank">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/ct.png" width="256" >
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <a href=" http://phytolife.jp/narrow_garden/" class="thumbnail" >
+          <img src="<?php echo get_template_directory_uri(); ?>/img/narrow_garden.png" class="img-responsive" >
         </a>
       </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail" target="_blank">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/ct.png" width="256" >
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <a href="http://phytolife.jp/top_10/" class="thumbnail">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/top_10.png" class="img-responsive" >
         </a>
       </div>
     </div>
@@ -84,31 +46,44 @@ if(have_posts()):
   <!--　投稿ページ表示  -->
   <div class="top-post">
     <h2 class="line"><i class="fa fa-tag" aria-hidden="true"></i>　施工事例</h2>
-    <div class="row">
+    <div class="row construction_case">
 <?php
-$the_query = new WP_Query(array(
-  'post_type' => 'construction_case',
-  'posts_per_page' => 8,
-  'orderby' => 'date',
-  'order' => 'DESC',
-));
+$the_query = getTopFixCCs();
 if($the_query->have_posts()):
-  while($the_query->have_posts()):$the_query->the_post();
+  $posts = $the_query->get_posts();
+  foreach($posts as $post):$the_query->the_post();
 ?>
-      <div class="col-xs-6 col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3 matchHeight">
         <a href="<?php the_permalink(); ?>" class="thumbnail">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/1.jpg" alt="">
-          <p class="thn-deta"><?php the_time('Y/m/d'); ?></p>
+          <img src="<?php echo get_template_directory_uri(); ?>/img/lazy_dummy.gif" data-original="<?php echo get_template_directory_uri(); ?>/img/single/<?php echo $post->post_name; ?>/list.jpg" class="lazy" alt="">
+          <p class="thn-deta"><?php echo post_custom('construction_date_year'); ?>年<?php echo post_custom('construction_date_month'); ?>月施工</p>
           <h3 class="thn-title"><?php the_title(); ?></h3>
         </a>
       </div>
 <?php
-  endwhile;
+  endforeach;
+endif;
+wp_reset_postdata();
+
+$the_query = getTopCCs();
+if($the_query->have_posts()):
+  $posts = $the_query->get_posts();
+  foreach($posts as $post):$the_query->the_post();
+?>
+      <div class="col-xs-12 col-sm-6 col-md-3 matchHeight">
+        <a href="<?php the_permalink(); ?>" class="thumbnail">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/lazy_dummy.gif" data-original="<?php echo get_template_directory_uri(); ?>/img/single/<?php echo $post->post_name; ?>/list.jpg" class="lazy" alt="">
+          <p class="thn-deta"><?php echo post_custom('construction_date_year'); ?>年<?php echo post_custom('construction_date_month'); ?>月施工</p>
+          <h3 class="thn-title"><?php the_title(); ?></h3>
+        </a>
+      </div>
+<?php
+  endforeach;
 endif;
 wp_reset_postdata();
 ?>
       <div class="col-xs-12">
-        <div class="pull-right"><a class="btn btn-default btn-sm" href="/construction_case_cat/" role="button">施工事例一覧</a></div>
+        <div class="pull-right"><a class="btn btn-default btn-sm" href="/construction_case/" role="button">施工事例一覧</a></div>
       </div>
     </div>
   </div>
@@ -121,7 +96,7 @@ wp_reset_postdata();
   <div class="tagnbox">
     <div class="row">
 <?php foreach($taglists as $tag): ?>
-      <div class="col-xs-6 col-md-6">
+      <div class="col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
             <i class="fa fa-tags" aria-hidden="true"></i>　<?php echo $tag->name; ?>

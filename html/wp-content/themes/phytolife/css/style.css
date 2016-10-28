@@ -48,7 +48,7 @@ a:hover {color:#333; background:#;}
 a:active {color:#333;}
 
 hr {
-	border-top: 3px double #8c8b8b;
+	border-top: 3px ##777;
 }
 
 /****************************************
@@ -87,6 +87,10 @@ hr {
     margin-bottom: 10px;
 }
 
+.color-ne{
+    color:#777;
+}
+    
 
 /****************************************
 お問合せBOX
@@ -130,6 +134,26 @@ hr {
     font-size: 20px;
     padding-top: 5px;
     text-align: center
+}
+
+.wpcf7 .wpcf7-response-output {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.wpcf7 .wpcf7-validation-errors {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.wpcf7 .wpcf7-mail-sent-ok {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.wpcf7 wpcf7-not-valid-tip {
+    color: #a94442;
 }
 
 /***************************************
@@ -435,9 +459,51 @@ a.thumbnail.active {
 
 /***************************************/
 
+/***************************************
+マップのレスポンシブ
+***************************************/
 
+.ggmap {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 30px;
+height: 0;
+overflow: hidden;
+}
+ 
+.ggmap iframe,
+.ggmap object,
+.ggmap embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
 
+/***************************************/
 
+/***************************************
+施工内容
+***************************************/
+.lesszero{
+    font-size: 18px;
+    text-align: ;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #009933;
+}
+
+.thng-title{
+    font-size: 16px;
+    text-align: left;
+    padding-top: -5px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 
 
 

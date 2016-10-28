@@ -18,15 +18,24 @@ global $catlists;
 <?php endforeach; ?>
         <div class="listbox">
           <ul class="list-group">
-<?php foreach($catlists as $cat): ?>
+            <li class="list-group-item"><a href="/construction_case_cat/shinchiku/">新築</a></li>
+            <li class="list-group-item"><a href="/construction_case_cat/reform/">リフォーム</a></li>
+            <li class="list-group-item"><a href="/construction_case_cat/petit_reform/">プチリフォーム</a></li>
+            <li class="list-group-item"><a href="/construction_case_cat/niwakoya/">庭小屋</a></li>
+            <li class="list-group-item"><a href="/construction_case_tag/iron/">オリジナルアイアン</a></li>
+            <li class="list-group-item"><a href="/construction_case_cat/modelgarden/">モデルガーデン</a></li>
+            <li class="list-group-item"><a href="/construction_case_cat/shopgarden/">ショップガーデン</a></li>
+            <li class="list-group-item"><a href="/construction_case/">全ての施工事例 </a></li>
+<?php /*foreach($catlists as $cat): ?>
             <li class="list-group-item"><a href="<?php echo get_category_link($cat->term_id); ?>"><?php echo $cat->name; ?></a></li>
-<?php endforeach; ?>
+<?php endforeach;*/ ?>
           </ul>
         </div>
         <!-- バナー表示区域-->
-        <a href="#" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/ct.png" width="256" ></a>
-        <a href="#" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/ct.png" width="256" ></a>
-        <a href="#" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/ct.png" width="256" ></a>
+        <a href="/model_garden" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/model_garden.png" class="img-responsive" ></a>
+        <a href="/how_much/" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/how_much.png" class="img-responsive" ></a>
+        <a href="/narrow_garden/" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/narrow_garden.png" class="img-responsive"></a>
+          <a href="/top_10/" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/top_10.png" class="img-responsive"></a>
         <!-- //バナー表示区域-->
       <!--.rightbox--></div>
     <!--.col-sm-4--></div>

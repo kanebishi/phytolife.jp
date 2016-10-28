@@ -41,24 +41,38 @@ $taglists = getCCTag();
 
     <div id="gnavi" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/concept">コンセプト</a></li>
-        <li><a href="/sekonaiyo">施工内容</a></li>
+        <li><a href="/sekonaiyo">Menu</a></li>
         <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">施工事例<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works<b class="caret"></b></a>
           <ul class="dropdown-menu">
-<?php foreach($catlists as $cat): ?>
-            <li><a href="<?php echo get_category_link($cat->term_id); ?>"><?php echo $cat->name; ?></a></li>
-<?php endforeach; ?>
+            <li><a href="/construction_case_cat/shinchiku/"><i class="fa fa-newspaper-o"></i> 新築</a></li>
+            <li><a href="/construction_case_cat/reform/"><i class="fa fa-newspaper-o"></i> リフォーム</a></li>
+            <li><a href="/construction_case_cat/petit_reform/"><i class="fa fa-newspaper-o"></i> プチリフォーム</a></li>
+            <li><a href="/construction_case_cat/niwakoya/"><i class="fa fa-newspaper-o"></i> 庭小屋</a></li>
+            <li><a href="/construction_case_tag/iron/"><i class="fa fa-newspaper-o"></i> オルジナルアイアン</a></li>  
+            <li><a href="/construction_case_cat/modelgarden/"><i class="fa fa-newspaper-o"></i> モデルガーデン</a></li>
+            <li><a href="/construction_case_cat/shopgarden/"><i class="fa fa-newspaper-o"></i> ショップガーデン</a></li>
+            <li><a href="/construction_case/"><i class="fa fa-newspaper-o"></i> 全ての施工事例 </a></li>
+<?php /*foreach($catlists as $cat): ?>
+            <li><a href="<?php echo get_category_link($cat->term_id); ?>"><i class="fa fa-newspaper-o"></i> <?php echo $cat->name; ?></a></li>
+<?php endforeach;*/ ?>
           </ul>
         </li>
-        <li><a href="/flow_to_complete">完成までの流れ</a></li>
-        <li><a href="/faq">よくあるご質問</a></li>
-        <li><a href="/company">会社概要</a></li>
+        <li><a href="/faq">F&Q</a></li>
+        <li><a href="/construction_case_cat/column/">Column</a></li>
         <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">お問合せ <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/company"><i class="fa fa-building-o"></i> 会社概要</a></li>
+            <li><a href="/recruitment"><i class="fa fa-pencil-square-o"></i> リクルート</a></li>
+            <li><a href="https://www.facebook.com/phytolife.jp/" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i> フェイスブック</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="/contact"><i class="fa fa-envelope"></i> フォーム</a></li>
-            <li><a href="/contact"><i class="fa fa-phone"></i> お電話</a></li>
+            <li><a href="/telephon/"><i class="fa fa-phone"></i> お電話</a></li>
           </ul>
         </li>
       </ul>
