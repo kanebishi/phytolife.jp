@@ -109,6 +109,48 @@ function phytolife_custom_wordpress_func() {
         'show_admin_column' => true, //投稿タイプのテーブルにタクソノミーのカラムを生成
       )
     );
+    register_post_type(
+      'reading', //投稿タイプ名
+      array(
+        'label'=> '読み物', //ラベル名
+        'labels' => array(
+          'menu_name' => '読み物', //管理画面のメニュー名
+          'all_items' => '読み物一覧',
+          'add_new_item' => '読み物を追加'
+        ),
+        'description'=> 'ディスクリプション',
+        'public' => true, //公開状態
+        'query_var' => true, // スラッグでURLをリクエストできる
+        'hierarchical' => false, //固定ページのように親ページを指定するならtrue
+        'rewrite' => array('slug' => 'reading'), //スラッグ名
+        'has_archive' => true, //パーマリンクがデフォルト以外、アーカイブページを表示する場合はtrue
+        'menu_position' => 5,
+        'supports' => array(
+          'title',
+          'editor',
+          'custom-fields',
+          'thumbnail',
+          'page-attributes',
+          'excerpt'
+        )
+      )
+    );
+    register_taxonomy(
+      'reading_cat', //タクソノミ名
+      'reading', //タクソノミを使う投稿タイプ名
+      array(
+        'rewrite' => array('slug' => 'reading_cat'), //投稿タイプのスラッグ
+        'label' => '読み物カテゴリー', //ラベル名
+        'labels' => array(
+          'menu_name' => 'カテゴリー' //管理画面のメニュー名
+        ),
+        'public' => true, //公開状態
+        'hierarchical' => true, //カテゴリのように扱う場合はtrue
+        'has_archive' => true,
+        'query_var' => true,
+        'show_admin_column' => true, //投稿タイプのテーブルにタクソノミーのカラムを生成
+      )
+    );
   }
   add_action('init', 'create_post_type');
 
@@ -163,8 +205,10 @@ function phytolife_custom_wordpress_func() {
     }
     //施工事例アーカイブ一覧フック
     if($query->is_post_type_archive('construction_case')
-      || $query->is_archive()){
+      || $query->is_tax('construction_case_cat')
+      || $query->is_tax('construction_case_tag')){
       //$query->set('posts_per_page', '100');
+      $query->set('post_status', 'publish');
       $query->set('meta_query', array(
         'relation' => 'AND',
         'meta_construction_date_year' => array(
@@ -182,41 +226,17 @@ function phytolife_custom_wordpress_func() {
       ));
       return;
     }
+    //読み物アーカイブ一覧フック
+    if($query->is_post_type_archive('reading')
+      || $query->is_tax('reading_cat')
+      || $query->is_tax('reading_tag')){
+      $query->set('post_status', 'publish');
+      //$query->set('orderby', 'rand');
+      return;
+    }
   }
   add_action('pre_get_posts', 'change_posts_per_page');
 
-/*
-  add_action('admin_menu', 'add_construction_case_field');
-
-  function add_construction_case_field() {
-    // add_meta_box(表示されるボックスのHTMLのID, ラベル, 表示する内容を作成する関数名, 投稿タイプ, 表示方法)
-    add_meta_box('construction_case-construction_date','施行日', 'create_form_construction_case_construction_date', 'construction_case', 'normal');
-  }
-
-  function create_form_construction_case_construction_date(){
-    global $post;
-    echo '<input name="construction_date" style="width: 100%;" value="'.get_post_meta($post->ID, 'construction_date', true).'"/>';
-  }
-
-  add_action('save_post', 'save_construction_case_field');
-
-  function save_construction_case_field($post_id){
-    $my_fields = array('construction_date');
-
-    foreach($my_fields as $my_field){
-      if(isset($_POST[$my_field])){
-        $value=$_POST[$my_field];
-      }else{
-        $value='';
-      }
-      if(strcmp($value, get_post_meta($post_id, $my_field, true)) != 0){
-        update_post_meta($post_id, $my_field, $value);
-      }elseif($value == ""){
-        delete_post_meta($post_id, $my_field, get_post_meta($post_id, $my_field, true));
-      }
-    }
-  }
-*/
 
   //連想配列を見やすく展開表示
   function pp($data){
@@ -286,19 +306,19 @@ function getTopCCs() {
 }
 
 //施工事例詳細ページ用関連記事取得
-function getCCRelationCCs($post_id) {
-  $categories = get_the_terms($post_id, 'construction_case_cat');
+function getCCRelationCCs($post_id, $ctype) {
+  $categories = get_the_terms($post_id, $ctype.'_cat');
   $catIds = array();
   foreach($categories as $category){
     $catIds[] = $category->term_id;
   }
   $the_query = new WP_Query(array(
-    'post_type' => 'construction_case',
+    'post_type' => $ctype,
     'posts_per_page' => 4,
     'tax_query' => array(
       'relation' => 'AND',
       array(
-        'taxonomy' => 'construction_case_cat',
+        'taxonomy' => $ctype.'_cat',
         'field' => 'id',
         'terms' => $catIds,
         'include_children' => false,

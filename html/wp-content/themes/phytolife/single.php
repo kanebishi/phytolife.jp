@@ -2,6 +2,10 @@
 //投稿ページ
 get_header();
 
+if(is_singular('construction_case')){
+  $is_construction_case = true;
+}
+
 if(have_posts()):
   while(have_posts()):the_post();
 ?>
@@ -22,7 +26,9 @@ if(have_posts()):
     <div class="col-sm-8">
       <div class="leftbox">
         <div class="title">
-          <p class="bg-deta"><i class="fa fa-tag" aria-hidden="true"></i> 施工：<?php echo post_custom('construction_date_year'); ?>/<?php echo post_custom('construction_date_month'); ?></p>
+<?php if($is_construction_case): ?>
+          <p class="bg-deta"><i class="fa fa-tag" aria-hidden="true"></i> 施工：<?php echo post_custom('construction_date_year'); ?>年<?php echo post_custom('construction_date_month'); ?>月</p>
+<?php endif; ?>
           <h1 class="maintitle"><?php the_title(); ?></h1>
         </div>
 <?php /*if($tags = get_the_terms($post->ID, 'construction_case_tag')): ?>
@@ -46,7 +52,8 @@ if(have_posts()):
 <!--.container--></div>
 
 <?php
-$the_query = getCCRelationCCs($post->ID);
+$ctype = $is_construction_case ? 'construction_case' : 'reading';
+$the_query = getCCRelationCCs($post->ID, $ctype);
 if($the_query->have_posts()):
 ?>
 <div class="container">

@@ -59,7 +59,7 @@ $taglists = getCCTag();
           </ul>
         </li>
         <li><a href="/faq">F&Q</a></li>
-        <li><a href="/construction_case_cat/column/">Column</a></li>
+        <li><a href="/reading_cat/columns/">Column</a></li>
         <li>
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
           <ul class="dropdown-menu">
