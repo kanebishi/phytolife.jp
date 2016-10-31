@@ -207,7 +207,7 @@ function phytolife_custom_wordpress_func() {
     if($query->is_post_type_archive('construction_case')
       || $query->is_tax('construction_case_cat')
       || $query->is_tax('construction_case_tag')){
-      //$query->set('posts_per_page', '100');
+      $query->set('posts_per_page', '20');
       $query->set('post_status', 'publish');
       $query->set('meta_query', array(
         'relation' => 'AND',
@@ -230,6 +230,7 @@ function phytolife_custom_wordpress_func() {
     if($query->is_post_type_archive('reading')
       || $query->is_tax('reading_cat')
       || $query->is_tax('reading_tag')){
+      $query->set('posts_per_page', '20');
       $query->set('post_status', 'publish');
       //$query->set('orderby', 'rand');
       return;
@@ -305,6 +306,24 @@ function getTopCCs() {
   return $the_query;
 }
 
+//トップページ用読み物一覧取得
+function getTopRdgs() {
+  $the_query = new WP_Query(array(
+    'post_type' => 'reading',
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'reading_cat',
+        'field' => 'slug',
+        'terms' => array('columns'),
+      )
+    ),
+    'posts_per_page' => 4,
+    'orderby' => 'date',
+    'order' => 'DESC',
+  ));
+  return $the_query;
+}
+
 //施工事例詳細ページ用関連記事取得
 function getCCRelationCCs($post_id, $ctype) {
   $categories = get_the_terms($post_id, $ctype.'_cat');
@@ -329,4 +348,33 @@ function getCCRelationCCs($post_id, $ctype) {
     'orderby' => 'rand',
   ));
   return $the_query;
+}
+
+//投稿系アーカイブページのページング
+function bootstrap_pagination($echo = true){
+  global $wp_query;
+  $big = 999999999; // need an unlikely integer
+  $pages = paginate_links(array(
+    'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+    'format' => '?paged=%#%',
+    'current' => max( 1, get_query_var('paged') ),
+    'total' => $wp_query->max_num_pages,
+    'type' => 'array',
+    'prev_next' => true,
+    'prev_text' => '« 前へ',
+    'next_text' => '次へ »',
+  ));
+  if( is_array( $pages ) ) {
+    $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+    $pagination = '<ul class="pagination">';
+    foreach ( $pages as $page ) {
+      $pagination .= '<li>'.$page.'</li>';
+    }
+    $pagination .= '</ul>';
+    if ( $echo ) {
+      echo $pagination;
+    } else {
+      return $pagination;
+    }
+  }
 }

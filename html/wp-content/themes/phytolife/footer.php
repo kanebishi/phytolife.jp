@@ -33,7 +33,7 @@
         <h2 class="lineb"><?php bloginfo('name'); ?></h2>
         <p><i class="fa fa-phone" aria-hidden="true"></i> 072-761-2656</p>
         <p><i class="fa fa-print" aria-hidden="true"></i> 072-703-6388</p>
-        <p>〒563-0022<br>大阪府池田市旭ヶ丘3-1-27<br>営業時間 : 8:00～19:00 </p>
+        <p>〒563-0022<br>大阪府池田市旭ヶ丘3-1-27<br>営業時間 : 8:00～17:00 </p>
       </div>
       <div class="col-xs-4">
         <h3 class="lineb">施工内容</h3>

@@ -10,10 +10,8 @@ $taglists = getCCTag();
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="<?php bloginfo('description'); ?>" />
-<meta name="keywords" content="<?php bloginfo('keywords'); ?>" />
 <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
-<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/touch-icon.png">
+<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/apple-touch-icon.png">
 <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">

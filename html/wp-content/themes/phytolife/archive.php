@@ -46,8 +46,8 @@ $archive_title = $cat_title ? $cat_title : ($is_construction_case ? "施工事�
               </a>
             </div>
 <?php endwhile; ?>
-
           </div>
+<?php echo bootstrap_pagination(); ?>
 <?php else: ?>
           <p>現在記事がありません</p>
 <?php endif; ?>

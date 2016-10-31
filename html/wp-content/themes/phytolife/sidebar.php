@@ -32,10 +32,10 @@ global $catlists;
           </ul>
         </div>
         <!-- バナー表示区域-->
-        <a href="/model_garden" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/model_garden.png" class="img-responsive" ></a>
-        <a href="/how_much/" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/how_much.png" class="img-responsive" ></a>
-        <a href="/narrow_garden/" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/narrow_garden.png" class="img-responsive"></a>
-          <a href="/top_10/" class="thumbnail" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/top_10.png" class="img-responsive"></a>
+        <div><a href="/model_garden" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/model_garden.png" class="img-responsive" ></a></div>
+        <div><a href="/how_much/" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/how_much.png" class="img-responsive" ></a></div>
+        <div><a href="/narrow_garden/" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/narrow_garden.png" class="img-responsive"></a></div>
+        <div><a href="/top_10/" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/top_10.png" class="img-responsive"></a></div>
         <!-- //バナー表示区域-->
       <!--.rightbox--></div>
     <!--.col-sm-4--></div>

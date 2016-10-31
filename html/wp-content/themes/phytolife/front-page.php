@@ -17,22 +17,22 @@ if(have_posts()):
     <h1 class="line"><i class="fa fa-home" aria-hidden="true"></i>　フィトライフの暮らしの庭</h1>
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3">
-        <a href="http://phytolife.jp/model_garden/" class="thumbnail" >
+        <a href="/model_garden/" class="thumbnail" >
           <img src="<?php echo get_template_directory_uri(); ?>/img/model_garden.png" class="img-responsive" >
         </a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3">
-        <a href="http://phytolife.jp/how_much/" class="thumbnail">
+        <a href="/how_much/" class="thumbnail">
           <img src="<?php echo get_template_directory_uri(); ?>/img/how_much.png" class="img-responsive" >
         </a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3">
-        <a href=" http://phytolife.jp/narrow_garden/" class="thumbnail" >
+        <a href="/narrow_garden/" class="thumbnail" >
           <img src="<?php echo get_template_directory_uri(); ?>/img/narrow_garden.png" class="img-responsive" >
         </a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3">
-        <a href="http://phytolife.jp/top_10/" class="thumbnail">
+        <a href="/top_10/" class="thumbnail">
           <img src="<?php echo get_template_directory_uri(); ?>/img/top_10.png" class="img-responsive" >
         </a>
       </div>
@@ -43,7 +43,6 @@ if(have_posts()):
 
 
 <div class="container">
-  <!--　投稿ページ表示  -->
   <div class="top-post">
     <h2 class="line"><i class="fa fa-tag" aria-hidden="true"></i>　施工事例</h2>
     <div class="row construction_case">
@@ -87,7 +86,32 @@ wp_reset_postdata();
       </div>
     </div>
   </div>
-  <!--　//投稿ページ表示  -->
+  <div class="top-post">
+    <h2 class="line"><i class="fa fa-tag" aria-hidden="true"></i>　コラム</h2>
+    <div class="row construction_case">
+<?php
+$the_query = getTopRdgs();
+if($the_query->have_posts()):
+  $posts = $the_query->get_posts();
+  foreach($posts as $post):$the_query->the_post();
+?>
+      <div class="col-xs-12 col-sm-6 col-md-3 matchHeight">
+        <a href="<?php the_permalink(); ?>" class="thumbnail">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/lazy_dummy.gif" data-original="<?php echo get_template_directory_uri(); ?>/img/single/<?php echo $post->post_name; ?>/list.jpg" class="lazy" alt="">
+          <p class="thn-deta"><?php the_time('Y/m/d'); ?></p>
+          <h3 class="thn-title"><?php the_title(); ?></h3>
+        </a>
+      </div>
+<?php
+  endforeach;
+endif;
+wp_reset_postdata();
+?>
+      <div class="col-xs-12">
+        <div class="pull-right"><a class="btn btn-default btn-sm" href="/reading_cat/columns/" role="button">コラム一覧</a></div>
+      </div>
+    </div>
+  </div>
 <!--.container--></div>
 
 
