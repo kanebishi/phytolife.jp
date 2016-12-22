@@ -87,7 +87,7 @@ wp_reset_postdata();
     </div>
   </div>
   <div class="top-post">
-    <h2 class="line"><i class="fa fa-tag" aria-hidden="true"></i>　コラム</h2>
+    <h2 class="line"><i class="fa fa-pencil" aria-hidden="true"></i>　庭作りに役立つコラム</h2>
     <div class="row construction_case">
 <?php
 $the_query = getTopRdgs();

@@ -483,8 +483,9 @@ height: 100%;
 
 /***************************************/
 
+
 /***************************************
-施工内容
+施工内容/コラム　タイポ
 ***************************************/
 .lesszero{
     font-size: 18px;
@@ -505,7 +506,13 @@ height: 100%;
     margin-bottom: 0px;
 }
 
-
-
-
+.lesszeros{
+    font-size: 18px;
+    text-align: ;
+    padding-top: 0px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #F0AD4E;
+}
 
