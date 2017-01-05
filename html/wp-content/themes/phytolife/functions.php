@@ -289,7 +289,7 @@ function getCCTag() {
 function getTopFixCCs() {
   $the_query = new WP_Query(array(
     'post_type' => 'construction_case',
-    'post__in' => array(147,46,44,35),
+    'post__in' => array(69,85,35,44),
     'orderby' => 'rand',
   ));
   return $the_query;
