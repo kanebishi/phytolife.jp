@@ -198,6 +198,108 @@ function phytolife_custom_wordpress_func() {
   }
   add_action('save_post', 'save_cc_meta_boxes');
 
+  // 施工事例カテゴリー追加項目
+  function form_cc_cat_info($tag) {
+      $t_id = $tag->term_id;
+      $cat_meta = get_option("cc_meta_$t_id");
+?>
+<tr class="form-field term-seo_title-wrap">
+  <th scope="row"><label for="seo_title">SEOタイトル</label></th>
+  <td><input type="text" name="Cat_meta[seo_title]" id="seo_title" size="25" value="<?php if(isset ( $cat_meta['seo_title'])) echo esc_html($cat_meta['seo_title']) ?>" />
+  <p class="description">一覧ページ用のSEOタイトルを指定します</p></td>
+</tr>
+<tr class="form-field term-seo_description-wrap">
+  <th scope="row"><label for="seo_description">SEOディスクリプション</label></th>
+  <td><textarea name="Cat_meta[seo_description]" id="seo_description" rows="3" cols="50" class="large-text"><?php if(isset ( $cat_meta['seo_description'])) echo esc_html($cat_meta['seo_description']) ?></textarea>
+  <p class="description">一覧ページ用のSEOSEOディスクリプションを指定します</p></td>
+</tr>
+<?php
+  }
+  add_action('construction_case_cat_edit_form_fields', 'form_cc_cat_info');
+
+  function save_cc_cat_info($term_id) {
+    if(isset( $_POST['Cat_meta'])){
+      $t_id = $term_id;
+      $cat_meta = get_option("cc_meta_$t_id");
+      $cat_keys = array_keys($_POST['Cat_meta']);
+      foreach ($cat_keys as $key){
+        if(isset($_POST['Cat_meta'][$key])){
+          $cat_meta[$key] = $_POST['Cat_meta'][$key];
+        }
+      }
+      update_option("cc_meta_$t_id", $cat_meta);
+    }
+  }
+  add_action('edited_term', 'save_cc_cat_info');
+
+  // 施工事例タグ追加項目
+  function form_cc_tag_info($tag) {
+      $t_id = $tag->term_id;
+      $cat_meta = get_option("cc_meta_$t_id");
+?>
+<tr class="form-field term-seo_title-wrap">
+  <th scope="row"><label for="seo_title">SEOタイトル</label></th>
+  <td><input type="text" name="Tag_meta[seo_title]" id="seo_title" size="25" value="<?php if(isset ( $cat_meta['seo_title'])) echo esc_html($cat_meta['seo_title']) ?>" />
+  <p class="description">一覧ページ用のSEOタイトルを指定します</p></td>
+</tr>
+<tr class="form-field term-seo_description-wrap">
+  <th scope="row"><label for="seo_description">SEOディスクリプション</label></th>
+  <td><textarea name="Tag_meta[seo_description]" id="seo_description" rows="3" cols="50" class="large-text"><?php if(isset ( $cat_meta['seo_description'])) echo esc_html($cat_meta['seo_description']) ?></textarea>
+  <p class="description">一覧ページ用のSEOSEOディスクリプションを指定します</p></td>
+</tr>
+<?php
+  }
+  add_action('construction_case_tag_edit_form_fields', 'form_cc_tag_info');
+
+  function save_cc_tag_info($term_id) {
+    if(isset( $_POST['Tag_meta'])){
+      $t_id = $term_id;
+      $cat_meta = get_option("cc_meta_$t_id");
+      $cat_keys = array_keys($_POST['Tag_meta']);
+      foreach ($cat_keys as $key){
+        if(isset($_POST['Tag_meta'][$key])){
+          $cat_meta[$key] = $_POST['Tag_meta'][$key];
+        }
+      }
+      update_option("cc_meta_$t_id", $cat_meta);
+    }
+  }
+  add_action('edited_term', 'save_cc_tag_info');
+
+  // 読み物カテゴリー追加項目
+  function form_reading_cat_info($tag) {
+      $t_id = $tag->term_id;
+      $cat_meta = get_option("reading_meta_$t_id");
+?>
+<tr class="form-field term-seo_title-wrap">
+  <th scope="row"><label for="seo_title">SEOタイトル</label></th>
+  <td><input type="text" name="Cat_meta[seo_title]" id="seo_title" size="25" value="<?php if(isset ( $cat_meta['seo_title'])) echo esc_html($cat_meta['seo_title']) ?>" />
+  <p class="description">一覧ページ用のSEOタイトルを指定します</p></td>
+</tr>
+<tr class="form-field term-seo_description-wrap">
+  <th scope="row"><label for="seo_description">SEOディスクリプション</label></th>
+  <td><textarea name="Cat_meta[seo_description]" id="seo_description" rows="3" cols="50" class="large-text"><?php if(isset ( $cat_meta['seo_description'])) echo esc_html($cat_meta['seo_description']) ?></textarea>
+  <p class="description">一覧ページ用のSEOSEOディスクリプションを指定します</p></td>
+</tr>
+<?php
+  }
+  add_action('reading_cat_edit_form_fields', 'form_reading_cat_info');
+
+  function save_reading_cat_info($term_id) {
+    if(isset( $_POST['Cat_meta'])){
+      $t_id = $term_id;
+      $cat_meta = get_option("reading_meta_$t_id");
+      $cat_keys = array_keys($_POST['Cat_meta']);
+      foreach ($cat_keys as $key){
+        if(isset($_POST['Cat_meta'][$key])){
+          $cat_meta[$key] = $_POST['Cat_meta'][$key];
+        }
+      }
+      update_option("reading_meta_$t_id", $cat_meta);
+    }
+  }
+  add_action('edited_term', 'save_reading_cat_info');
+
   function change_posts_per_page($query) {
     //管理画面,メインクエリに干渉しないために必須
     if(is_admin() || ! $query->is_main_query()){
@@ -238,6 +340,47 @@ function phytolife_custom_wordpress_func() {
   }
   add_action('pre_get_posts', 'change_posts_per_page');
 
+  // 施工事例アーカイブページSEO用タイトル
+  function custome_archives_title($title){
+    if(is_post_type_archive('construction_case')){
+      $title = "施工事例一覧";
+    }elseif(is_tax('construction_case_cat') || is_tax('construction_case_tag')){
+      $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+      $t_ID = $term->term_id;
+      $term_data = get_option("cc_meta_$t_ID");
+      $title = isset($term_data['seo_title']) ? $term_data['seo_title'] : "";
+    }elseif(is_post_type_archive('reading')){
+      $title = "読み物一覧";
+    }elseif(is_tax('reading_cat') || is_tax('reading_tag')){
+      $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+      $t_ID = $term->term_id;
+      $term_data = get_option("reading_meta_$t_ID");
+      $title = isset($term_data['seo_title']) ? $term_data['seo_title'] : "";
+    }
+    return $title;
+  }
+  add_filter('aioseop_title', 'custome_archives_title');
+
+  // 施工事例アーカイブページSEO用ディスクリプションを入力
+  function custome_archives_description($description){
+    if(is_post_type_archive('construction_case')){
+      $description = "施工事例一覧";
+    }elseif(is_tax('construction_case_cat') || is_tax('construction_case_tag')){
+      $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+      $t_ID = $term->term_id;
+      $term_data = get_option("cc_meta_$t_ID");
+      $description = isset($term_data['seo_description']) ? $term_data['seo_description'] : "";
+    }elseif(is_post_type_archive('reading')){
+      $description = "読み物一覧";
+    }elseif(is_tax('reading_cat') || is_tax('reading_tag')){
+      $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+      $t_ID = $term->term_id;
+      $term_data = get_option("reading_meta_$t_ID");
+      $description = isset($term_data['seo_description']) ? $term_data['seo_description'] : "";
+    }
+    return $description;
+  }
+  add_filter('aioseop_description', 'custome_archives_description');
 
   //連想配列を見やすく展開表示
   function pp($data){
