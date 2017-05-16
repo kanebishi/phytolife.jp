@@ -11,44 +11,44 @@ Version:
 font{
     font-size: 100%;
     font-family: 
-    color: #555;
+    color: #333333;
     line-height: 160%;
 }
 
 p{
     font-size: 120%;
-    color: #555;
+    color: #333333;
     line-height: 160%;
 }
 
 h1{
     font-size: 200%;
-    color: #555;
+    color: #333333;
     
 }
 
 h2{
     font-size: 180%;
-    color: #555;
+    color: #333333;
 }
 
 h3{
     font-size: 160%;
-    color: #555;
+    color: #333333;
 }
 
 h4{
     font-size: 130%;
-    color: #555;
+    color: #333333;
 }
 
-a:link {color:#777;}
-a:visited {color:#777;}
-a:hover {color:#333; background:#;}
-a:active {color:#333;}
+a:link {color:#006400;}
+a:visited {color:#006400;}
+a:hover {color:#006400; background:#;}
+a:active {color:#006400;}
 
 hr {
-	border-top: 3px ##777;
+	border-top: 3px #777;
 }
 
 /****************************************
@@ -494,7 +494,7 @@ height: 100%;
     padding-bottom: 5px;
     margin-top: 0px;
     margin-bottom: 0px;
-    color: #009933;
+    color: #556B2F;
 }
 
 .thng-title{

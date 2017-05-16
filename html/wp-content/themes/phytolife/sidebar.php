@@ -15,6 +15,7 @@ global $catlists;
   <?php endforeach; ?>
           </div>
         </div>
+
 <?php endforeach; ?>
         <div class="listbox">
           <ul class="list-group">
@@ -35,7 +36,19 @@ global $catlists;
         <div><a href="/model_garden" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/model_garden.png" class="img-responsive" ></a></div>
         <div><a href="/how_much/" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/how_much.png" class="img-responsive" ></a></div>
         <div><a href="/narrow_garden/" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/narrow_garden.png" class="img-responsive"></a></div>
-        <div><a href="/top_10/" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/top_10.png" class="img-responsive"></a></div>
+        <div><a href="/reading/column_functionality_of_the_niwakoya/" class="thumbnail"><img src="<?php echo get_template_directory_uri(); ?>/img/niwakoya.png" class="img-responsive"></a></div>
+          <script>
+          (function() {
+            var cx = '011380813806535636237:yd1nvmcj6zi';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        <gcse:search></gcse:search>
         <!-- //バナー表示区域-->
       <!--.rightbox--></div>
     <!--.col-sm-4--></div>

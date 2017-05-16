@@ -343,14 +343,14 @@ function phytolife_custom_wordpress_func() {
   // 施工事例アーカイブページSEO用タイトル
   function custome_archives_title($title){
     if(is_post_type_archive('construction_case')){
-      $title = "施工事例一覧";
+      $title = "フィトライフの庭（ガーデン）や家周りの施工事例（関西：大阪、兵庫、京都、奈良、滋賀）";
     }elseif(is_tax('construction_case_cat') || is_tax('construction_case_tag')){
       $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
       $t_ID = $term->term_id;
       $term_data = get_option("cc_meta_$t_ID");
       $title = isset($term_data['seo_title']) ? $term_data['seo_title'] : "";
     }elseif(is_post_type_archive('reading')){
-      $title = "読み物一覧";
+      $title = "フィトライフの庭（ガーデン）や家周りの施工事例（関西：大阪、兵庫、京都、奈良、滋賀）";
     }elseif(is_tax('reading_cat') || is_tax('reading_tag')){
       $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
       $t_ID = $term->term_id;
@@ -364,14 +364,14 @@ function phytolife_custom_wordpress_func() {
   // 施工事例アーカイブページSEO用ディスクリプションを入力
   function custome_archives_description($description){
     if(is_post_type_archive('construction_case')){
-      $description = "施工事例一覧";
+      $description = "株式会社フィトライフは、川西市、宝塚市、伊丹市、池田市、豊中市、箕面市、吹田市、西宮市、三田市を中心に、「暮らしに役立つ庭」「快適に過ごせる庭」をコンセプトに、お客様ごとにオーダーメイドで造園（庭作り）・外構・ガーデンリフォーム・庭小屋作り・木製自転車小屋作りなどを行っております。このページでは、お客様のご要望やご予算に対応した施工事例をご紹介いたします。";
     }elseif(is_tax('construction_case_cat') || is_tax('construction_case_tag')){
       $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
       $t_ID = $term->term_id;
       $term_data = get_option("cc_meta_$t_ID");
       $description = isset($term_data['seo_description']) ? $term_data['seo_description'] : "";
     }elseif(is_post_type_archive('reading')){
-      $description = "読み物一覧";
+      $description = "株式会社フィトライフは、川西市、宝塚市、伊丹市、池田市、豊中市、箕面市、吹田市、西宮市、三田市を中心に、「暮らしに役立つ庭」「快適に過ごせる庭」をコンセプトに、お客様ごとにオーダーメイドで造園（庭作り）・外構・ガーデンリフォーム・庭小屋作り・木製自転車小屋作りなどを行っております。このページでは、お客様のご要望やご予算に対応した施工事例をご紹介いたします。";
     }elseif(is_tax('reading_cat') || is_tax('reading_tag')){
       $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
       $t_ID = $term->term_id;

@@ -39,9 +39,9 @@ $taglists = getCCTag();
 
     <div id="gnavi" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/sekonaiyo">Menu</a></li>
+        <li><a href="/sekonaiyo">施工内容</a></li>
         <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">施工事例<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="/construction_case_cat/shinchiku/"><i class="fa fa-newspaper-o"></i> 新築</a></li>
             <li><a href="/construction_case_cat/reform/"><i class="fa fa-newspaper-o"></i> リフォーム</a></li>
@@ -56,10 +56,10 @@ $taglists = getCCTag();
 <?php endforeach;*/ ?>
           </ul>
         </li>
-        <li><a href="/faq">F&Q</a></li>
-        <li><a href="/reading_cat/columns/">Column</a></li>
+        <li><a href="/faq">ご質問</a></li>
+        <li><a href="/reading_cat/columns/">コラム</a></li>
         <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">会社案内 <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="/company"><i class="fa fa-building-o"></i> 会社概要</a></li>
             <li><a href="/recruitment"><i class="fa fa-pencil-square-o"></i> リクルート</a></li>
@@ -67,7 +67,7 @@ $taglists = getCCTag();
           </ul>
         </li>
         <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">お問合せ <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="/contact"><i class="fa fa-envelope"></i> フォーム</a></li>
             <li><a href="/telephon/"><i class="fa fa-phone"></i> お電話</a></li>
