@@ -13,8 +13,8 @@ $taglists = getCCTag();
 <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/apple-touch-icon.png">
 <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/font-awesome.min.css">
 <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
 <!--[if lt IE 9]>
 <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -50,7 +50,7 @@ $taglists = getCCTag();
             <li><a href="/construction_case_tag/iron/"><i class="fa fa-newspaper-o"></i> オルジナルアイアン</a></li>  
             <li><a href="/construction_case_cat/modelgarden/"><i class="fa fa-newspaper-o"></i> モデルガーデン</a></li>
             <li><a href="/construction_case_cat/shopgarden/"><i class="fa fa-newspaper-o"></i> ショップガーデン</a></li>
-            <li><a href="/construction_case/"><i class="fa fa-newspaper-o"></i> 全ての施工事例 </a></li>
+            <li><a href="/construction_case/"><i class="fa fa-newspaper-o"></i> 全ての施工事例</a></li>
 <?php /*foreach($catlists as $cat): ?>
             <li><a href="<?php echo get_category_link($cat->term_id); ?>"><i class="fa fa-newspaper-o"></i> <?php echo $cat->name; ?></a></li>
 <?php endforeach;*/ ?>

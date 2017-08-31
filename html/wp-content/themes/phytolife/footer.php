@@ -33,7 +33,7 @@
         <h2 class="lineb"><?php bloginfo('name'); ?></h2>
         <p><i class="fa fa-phone" aria-hidden="true"></i> 072-761-2656</p>
         <p><i class="fa fa-print" aria-hidden="true"></i> 072-703-6388</p>
-        <p>〒563-0022<br>大阪府池田市旭ヶ丘3-1-27<br>営業時間 : 8:00～17:00 </p>
+        <p>〒563-0022<br>大阪府池田市旭ヶ丘3-1-27<br>営業時間 : 8:00～17:00</p>
       </div>
       <div class="col-xs-4">
         <h3 class="lineb">施工内容</h3>
@@ -109,7 +109,7 @@
           <li><a href="/">| トップ |</a></li>
           <li><a href="/sitepolicy">| サイトポリシー |</a></li>
           <li><a href="/sitemap">| サイトマップ |</a></li>
-          <li><a href="https://www.facebook.com/phytolife.jp/">| フェイスブック |</a></li>
+          <li><a href="https://www.facebook.com/phytolife.jp/" target="_blank">| フェイスブック |</a></li>
         </ul>
       </div>
       <div class="col-xs-12">
@@ -120,10 +120,10 @@
 <!--.footer--></div>
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.matchHeight.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.matchHeight-min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.lazyload.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
 <script>
 jQuery(function($){
   $("div.construction_case div.matchHeight a").matchHeight();
