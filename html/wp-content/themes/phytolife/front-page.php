@@ -65,12 +65,49 @@ if(have_posts()):
 </div>
 <!--.container--></div>
 
+<!-- info-->
+<div class="container">
+<h2 class="line"><i class="fa fa-info-circle" aria-hidden="true"></i> お知らせ</h2>
+    <div class="row">
+         <div class="col-sm-2">
+             <div class="infoboxdeta">2017年10月01日</div>
+         </div>
+         <div class="col-sm-10">
+         <div class="infobox">
+          <a href="/niwa_229/"><span class="infoboxct">フィトライフの庭小屋が、雑誌「庭ＮＩＷＡ No.229 2017冬号」に掲載されました</span></a>
+          </div>
+         </div>
+    </div>
+<!--.container--></div>
 
+<!--works-->
+<div class="container">
+ <h2 class="line"><i class="fa fa-tag" aria-hidden="true"></i> お問い合わせの多い施工内容</h2>
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+            <div class="alpha"><a href="/koya/"><img src="<?php echo get_template_directory_uri(); ?>/img/koya.jpg" width="100%"></a></div>
+            <p class="business">小屋（庭小屋）</p>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+            <div class="alpha"><a href="/fence/"><img src="<?php echo get_template_directory_uri(); ?>/img/fence.jpg" width="100%"></a></div>
+            <p class="business">ウッドフェンス</p>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+            <div class="alpha"><a href="/wood_deck/"><img src="<?php echo get_template_directory_uri(); ?>/img/wood.jpg" width="100%"></a></div>
+            <p class="business">ウッドデッキ</p>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+            <div class="alpha"><a href="/parking/"><img src="<?php echo get_template_directory_uri(); ?>/img/carport.jpg" width="100%"></a></div>
+            <p class="business">駐車場</p>
+            </div>   
+        </div>
+<!--.works-->
+</div>
 
 
 <div class="container">
   <div class="top-post">
-    <h2 class="line"><i class="fa fa-tag" aria-hidden="true"></i>　フィトライフの施工事例</h2>
+    <h2 class="line"><i class="fa fa-tags" aria-hidden="true"></i> フィトライフの施工事例</h2>
     <div class="row construction_case">
 <?php
 $the_query = getTopFixCCs();
@@ -113,7 +150,7 @@ wp_reset_postdata();
     </div>
   </div>
   <div class="top-post">
-    <h2 class="line"><i class="fa fa-pencil" aria-hidden="true"></i>　庭作りや外構に役立つ情報</h2>
+    <h2 class="line"><i class="fa fa-pencil" aria-hidden="true"></i> 庭作りや外構に役立つ情報</h2>
     <div class="row construction_case">
 <?php
 $the_query = getTopRdgs();

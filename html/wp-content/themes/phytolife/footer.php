@@ -1,23 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h2 class="line"><i class="fa fa-comments" aria-hidden="true"></i> お問合せ/ご相談</h2>
+<h2 class="line"><i class="fa fa-comments" aria-hidden="true"></i> お問合せ/ご相談</h2>
+    <div class="row">
+         <div class="col-sm-6">
+               <div class="contactbox">
+               <a style="text-decoration: none;" href="tel:072-761-2656">
+               <p class="contactp"><i class="fa fa-phone" aria-hidden="true"></i> 072-761-2656</p>
+               </a>
+               </div>
+          </div>
+          <div class="col-sm-6">
+              <div class="contactboxh">
+                <a style="text-decoration: none;" href="/contact">
+                  <p class="contactp"><i class="fa fa-envelope-o" aria-hidden="true"></i> フォーム</p>
+                </a>
+              </div>
+          </div>
     </div>
-    <div class="col-xs-6">
-      <div class="contactbox">
-        <p class="contactp"><i class="fa fa-phone" aria-hidden="true"></i> 072-761-2656</p>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="contactboxh">
-        <a style="text-decoration: none;" href="/contact">
-          <p class="contactp"><i class="fa fa-envelope-o" aria-hidden="true"></i> フォーム</p>
-        </a>
-      </div>
-    </div>
-  <!--.row--></div>
-<!--.container--></div>
-
+</div><!--.container-->
 
 <div class="btn-pagetop">
   <div class="container">
@@ -63,6 +62,7 @@
           <li>伊丹市</li>
           <li>豊中市</li>
           <li>箕面市</li>
+          <li>吹田市</li>
           <li>尼崎市</li>
           <li>茨木市</li>
           <li>高槻市</li>
