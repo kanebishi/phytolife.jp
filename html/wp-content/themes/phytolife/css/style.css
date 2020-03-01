@@ -829,3 +829,68 @@ text-align: center;
 .business{
  text-align: center;    
 }
+
+
+.headline{
+	padding: 10px;
+	border-left: 5px solid #339966;
+    border-bottom: 1px solid #999999;
+}
+
+.conbox3 {
+	background-color: #fff;
+	border: 1px solid #DBDBDB;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
+	/*影*/
+}
+
+.conbox3 .conbox-body3 {
+	padding: 20px 20px 10px 20px;
+	text-align: left;
+}
+
+.btitelenon {
+	padding-top: 0px;
+	padding-bottom: 5px;
+	margin: 0px 0px 15px 0px;
+	color: darkgreen;
+	border-bottom: 1px solid #999;
+}
+
+.conbox3 {
+	background-color: #fff;
+	border: 1px solid #DBDBDB;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.32);
+	/*影*/
+}
+
+.conbox3 .conbox-body3 {
+	padding: 20px 20px 10px 20px;
+	text-align: left;
+}
+
+.headline{
+	padding: 10px;
+	border-left: 5px solid #339966;
+    border-bottom: 1px solid #999999;
+}
+
+.btitelenon {
+	padding-top: 0px;
+	padding-bottom: 5px;
+	margin: 0px 0px 15px 0px;
+	color: darkgreen;
+	border-bottom: 1px solid #999;
+}
+
+.waku {
+    padding: 20px 0px 10px 0px;
+    margin: 30px 0px 10px 0px;
+    border: double 3px green;
+    text-align: center;
+    background-image: url(../img/top_koya.jpg)
+}

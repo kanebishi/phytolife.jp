@@ -389,6 +389,15 @@ function phytolife_custom_wordpress_func() {
     echo "</pre>";
   }
 
+  // 投稿者アーカイブ非表示リダイレクト
+  function author_archive_redirect() {
+    if( is_author() ) {
+      wp_redirect( home_url());
+      exit;
+    }
+  }
+  add_action('template_redirect', 'author_archive_redirect');
+
 }
 phytolife_custom_wordpress_func();
 
@@ -442,7 +451,7 @@ function getTopFixCCs() {
 function getTopCCs() {
   $the_query = new WP_Query(array(
     'post_type' => 'construction_case',
-    'posts_per_page' => 4,
+    'posts_per_page' => 8,
     'orderby' => 'date',
     'order' => 'DESC',
   ));
